@@ -3,7 +3,7 @@ import glob
 import os
 from pathlib import Path
 
-import helpers
+from context import JobXContext
 
 
 def compile_directory(source_directory: str, target_directory: str, data={}):
@@ -20,7 +20,8 @@ def compile_directory(source_directory: str, target_directory: str, data={}):
 
 
 if __name__ == "__main__":
+  job_context = JobXContext()
   compile_directory("./sqls", "./compiled", {
     'logical_date': "2022-12-12",
-    'helpers': helpers,
+    'context': job_context,
   })
