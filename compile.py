@@ -3,6 +3,8 @@ import glob
 import os
 from pathlib import Path
 
+import helpers
+
 
 def compile_directory(source_directory: str, target_directory: str, data={}):
   for source_filename in glob.glob(f"{source_directory}/**/*.sql", recursive=True):
@@ -18,4 +20,7 @@ def compile_directory(source_directory: str, target_directory: str, data={}):
 
 
 if __name__ == "__main__":
-  compile_directory("./sqls", "./compiled", {'logical_date': "2022-12-12"})
+  compile_directory("./sqls", "./compiled", {
+    'logical_date': "2022-12-12",
+    'helpers': helpers,
+  })
