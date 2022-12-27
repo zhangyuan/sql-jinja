@@ -1,0 +1,16 @@
+
+name: main
+
+on: [push]
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - run: python compile.py
+      - run: cat compiled/*
